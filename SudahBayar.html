@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bayar Tiket</title>
+    <link rel="stylesheet" href="https://digitiket.com/asset/framework/ionicons/css/ionicons.min.css">
+<link rel="stylesheet" href="https://digitiket.com/asset/css/style.css?v=0.1.1">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+
+<link rel="stylesheet" href="https://digitiket.com/asset/css/app-template.css">
+
+<!-- JS, Popper.js, and jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+<script src="https://digitiket.com/asset/js/jquery-scrolltofixed-min.js"></script>
+<script src="https://digitiket.com/assets/9e44282e/jquery.js"></script>
+<script src="https://digitiket.com/assets/f90f9b5e/yii.js"></script>
+<style>
+    body{
+        font-family: Lato;
+        font-style: normal;
+        font-weight: normal;
+        letter-spacing: 0.04em;
+    }
+    .col-md-5-5{
+      width: 50.5%;
+    }
+    .col-md-2-2{
+      width: 20%;
+    }
+    .col-md-2-1{
+      width: 16%;
+    }
+    .col-md-4-5{
+        width: 48%;
+    }
+      
+</style>
+</head>
+<body>
+    <header id="header-web">
+        <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-0">
+          <div class="container d-flex">
+            <button class="navbar-toggler d-lg-none d-flex flex-column" type="button" data-toggle="collapse" data-target="#nav-main" aria-controls="nav-main" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+              <small>menu</small>
+            </button>
+            <a class="navbar-brand" href="#">
+              <h1 class="text-hide m-0">DigiTiket</h1>
+              <img src="/img/FrameDigitiket.png" alt="DigiTiket">
+            </a>
+            <button class="navbar-toggler d-lg-none d-flex flex-column" type="button" data-toggle="collapse" data-target="#fcari-collapse" aria-controls="nav-main" aria-expanded="false" aria-label="Toggle navigation">
+              <img class="d-block mx-auto mb-1" src="/img/VectorCari.svg" alt="">
+              <small>cari</small>
+            </button>
+  
+            <div class="collapse navbar-collapse" id="fcari-collapse">
+              <form id="fcari" action="" class="col-lg-7 ml-lg-5 mr-lg-auto px-0 px-lg-2">
+                <div class="form-group mb-0">
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text"><img src="/img/VectorCari.svg" alt=""></div>
+                    </div>
+                    <input type="text" placeholder="Temukan Event, Wahana Wisata , Virtual Tour, Lain-lain." class="form-control">
+                  </div>
+                </div>
+              </form>
+            </div>          
+            <a href="#" class="btn btn-brand-2 btn-light px-4 py-2 d-none d-lg-inline-block">Login</a>          
+          </div>
+        </nav>
+  
+  
+          <nav id="menu-utama" class="navbar navbar-expand-lg navbar-light bg-transparent">
+          <div class="container d-flex justify-content-between">
+            
+  
+            <div class="collapse navbar-collapse" id="nav-main">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                  <a class="nav-link" href="/v/search?cat=att">
+                    <img class="nav-link-icon" src="/img/Vectorattraction.svg" alt="">Attraction
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/v/search?cat=ev">
+                    <img class="nav-link-icon" src="/img/Vectorevent.svg" alt="">Event
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/v/search?cat=vt">
+                    <img class="nav-link-icon" src="/img/VectorVtour.svg" alt="">Virtual Tour <span class="badge badge-primary bg-brand-1 ml-2">New</span> 
+                  </a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="pilihKota" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img class="nav-link-icon"  src="/img/VectorMap.svg" alt="">
+                    Semarang
+                  </a>
+                  <div id="dropdown-kota" class="dropdown-menu py-4" aria-labelledby="pilihKota">
+                    <form id="cariKota" name="cariKota" class="px-4 py-3">
+                      <div class="form-group m-0 p-0">
+                        <input type="text" class="form-control m-0" id="inputKota" placeholder="Semarang">
+                      </div>
+                      <ul class="autoComplete list-unstyled mt-3 mb-0">
+                        <li><a class="d-block px-3 py-1" href="#">Bali</a></li>
+                        <li><a class="d-block px-3 py-1" href="#">Balikpapan</a></li>
+                        <li><a class="d-block px-3 py-1" href="#">Bandung</a></li>
+                        <li><a class="d-block px-3 py-1" href="#">Batam</a></li>
+                      </ul>
+                    </form>
+                    <hr class="my-1 mx-4">
+                    <section class="suggestion px-4 py-3">
+                      <h4>Pencarian Terakhir</h4>
+                      <div class="d-flex flex-wrap">
+                        <div class="col-6 col-md-4 col-lg-3 px-1 mb-2"><a href="#" class="btn btn-block btn-brand-2">Wonosobo</a></div>
+                        <div class="col-6 col-md-4 col-lg-3 px-1 mb-2"><a href="#" class="btn btn-block btn-brand-2">Bali</a></div>
+                        <div class="col-6 col-md-4 col-lg-3 px-1 mb-2"><a href="#" class="btn btn-block btn-brand-2">Bandung</a></div>
+                        <div class="col-6 col-md-4 col-lg-3 px-1 mb-2"><a href="#" class="btn btn-block btn-brand-2">Banyuwangi</a></div>
+                      </div>
+                    </section>
+                    <hr class="my-1 mx-4">
+                    <section class="suggestion px-4 py-3">
+                      <h4>Kota Rekomendasi</h4>
+                      <div class="d-flex flex-wrap">
+                        <div class="col-6 col-md-4 col-lg-3 px-1 mb-2"><a href="#" class="btn btn-block btn-brand-2">Jakarta</a></div>
+                        <div class="col-6 col-md-4 col-lg-3 px-1 mb-2"><a href="#" class="btn btn-block btn-brand-2">Bali</a></div>
+                        <div class="col-6 col-md-4 col-lg-3 px-1 mb-2"><a href="#" class="btn btn-block btn-brand-2">Bandung</a></div>
+                        <div class="col-6 col-md-4 col-lg-3 px-1 mb-2"><a href="#" class="btn btn-block btn-brand-2">Banyuwangi</a></div>
+                        <div class="col-6 col-md-4 col-lg-3 px-1 mb-2"><a href="#" class="btn btn-block btn-brand-2">Semarang</a></div>
+                        <div class="col-6 col-md-4 col-lg-3 px-1 mb-2"><a href="#" class="btn btn-block btn-brand-2">Yogyakarta</a></div>
+                        <div class="col-6 col-md-4 col-lg-3 px-1 mb-2"><a href="#" class="btn btn-block btn-brand-2">Magelang</a></div>
+                        <div class="col-6 col-md-4 col-lg-3 px-1 mb-2"><a href="#" class="btn btn-block btn-brand-2">Cirebon</a></div>
+                        <div class="col-6 col-md-4 col-lg-3 px-1 mb-2"><a href="#" class="btn btn-block btn-brand-2">Surabaya</a></div>
+                        <div class="col-6 col-md-4 col-lg-3 px-1 mb-2"><a href="#" class="btn btn-block btn-brand-2">Surabaya</a></div>
+                        <div class="col-6 col-md-4 col-lg-3 px-1 mb-2"><a href="#" class="btn btn-block btn-brand-2">Malang</a></div>
+                        <div class="col-6 col-md-4 col-lg-3 px-1 mb-2"><a href="#" class="btn btn-block btn-brand-2">Surakarta</a></div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                  <a href="#" class="nav-link btn-tiket">
+                    <img src="/img/VectorPlus.svg" alt="" class="nav-link-icon">
+                    Buat Tiket
+                  </a>
+                </li>
+                <li class="nav-item d-lg-none">
+                  <a class="nav-link text-left bg-brand-2" href="#">
+                    <strong>Login</strong>
+                  </a>
+                </li>
+              </ul>
+            </div>
+            
+          </div>
+        </nav>  
+    </header>
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="container" style="background: #FFFFFF;border: 2px solid #05BC39;box-sizing: border-box;border-radius: 3px; padding: 40px;">
+                    <div class="row">
+                        <div class="col-md-3"><img src="/img/VectorDone.svg" alt=""></div>
+                        <div class="col-md">
+                            <p style="font-weight: bold;font-size: 24px;line-height: 29px;">Terima Kasih, Sudah Melakukan Pembayaran.</p>
+                            <p style="font-size: 13px;line-height: 19px; margin-top: -10px; margin-bottom: -7px;">*Tiket dan tata cara penggunaan dikirimkan melalui email Anda.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="container mt-3" style="background: #FFFFFF;border: 1px solid #EEEEEE;box-sizing: border-box;border-radius: 3px; padding: 29px;">
+                    <p style="font-weight: bold;font-size: 24px;line-height: 29px; color: #000000;">Perlu Bantuan ?</p>
+                    <hr style="border: 1px solid #EEEEEE;">
+                    <p style="font-weight: bold;font-size: 19px;line-height: 23px; color: #000;">Nama Lengkap</p>
+                    <input type="text" name="" id="">
+                    <p style="font-weight: bold;font-size: 19px;line-height: 23px; color: #000; margin-top: 20px;">Email</p>
+                    <input type="text" name="" id="">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <section id="footer-menu">
+      <div class="container">
+      <div class="row justify-content-between">
+        <div class="col-lg-4">
+        <h3 class="footer-heading mb-4">Langganan Newsletter</h3>
+        <p>Jadi orang yang pertama tahu info & promosi<br>Wisata, Event, Terbaru. Gratis.</p>
+        <form action="" class="mb-5">
+          <input type="text" class="form-control" placeholder="Masukkan Email kemudian enter">
+        </form>
+        <h3 class="footer-heading mb-4">Download DigiTiket Apps</h3>
+        <a href="https://digitiket.com/play.google.com/store/apps/details?id=com.digitiket.customer" class="d-block mb-4">
+          <img src="/img/playstore.svg" alt="">
+        </a>
+        </div>
+        <div class="col-lg-2">
+        <h3 class="footer-heading mb-4">Perusahaan</h3>
+        <ul class="list-unstyled">
+          <li><a class="d-block py-1" href="#">Karir</a></li>
+          <li><a class="d-block py-1" href="#">Blog</a></li>
+          <li><a class="d-block py-1" href="/join">Jadi Partner DigiTiket</a></li>
+          <li><a class="d-block py-1" href="#">DigiTiket Press Room</a></li>
+          <li><a class="d-block py-1" href="/brandidentity">Brand Guidelines</a></li>
+          <li><a class="d-block py-1" href="#">Alamat Kantor</a></li>
+        </ul>
+        </div>
+        <div class="col-lg-2">
+        <h3 class="footer-heading mb-4">Bantuan</h3>
+        <ul class="list-unstyled">
+          <li><a class="d-block py-1" href="/faq#carapesan">Cara Pesan</a></li>
+          <li><a class="d-block py-1" href="/faq">FAQ</a></li>			
+          <li><a class="d-block py-1" href="#">Kebijakan dan Privasi</a></li>
+          <li><a class="d-block py-1" href="/tos">Syarat dan Ketentuan</a></li>
+        </ul>
+        </div>
+        <div class="col-lg-3">
+          <h3 class="footer-heading mb-4">Berkolaborasi</h3>
+          <div class="mb-4">
+            <div style="display: inline-block;background-color: #fff;padding: 0 5px;margin-bottom: 3px;margin-right: 3px;">
+              <img src="/img/Partner.svg" style="width: 150px;">
+            </div>				
+          </div>
+          
+          <h3 class="footer-heading mb-4">Metode Pembayaran</h3>
+          <div style="
+          position: absolute;;
+          top: 45%;
+          right: 19%;">
+            <img src="/img/image 1.svg" alt="">
+          </div>
+        </div>
+      </div>
+      </div>
+    </section>
+  </section>
+    <section id="footer" class="mt-lg-5 py-lg-4 py-3">
+      <div class="container d-flex flex-column flex-xl-row align-items-center justify-content-between">
+      <div class="d-flex mr-xl-auto mt-lg-5 mt-xl-0 py-2 text-center text-lg-left">
+        Copyright &copy;2020. DigiTiket. All Right Reserved
+      </div>
+      <ul class="nav nav-pills ml-xl-auto flex-md-row">
+        <li class="nav-item"><a href="https://www.instagram.com/digitiket" class="d-block d-md-inline-block px-2 py-1 text-center"><img src="/img/logo-instagram.svg" alt="instagram"></a></li>
+        <li class="nav-item"><a href="https://twitter.com/digitiket" class="d-block d-md-inline-block px-2 py-1 text-center"><img src="/img/logo-twitter.svg" alt="twitter"></a></li>
+        <li class="nav-item"><a href="https://www.facebook.com/digitiket" class="d-block d-md-inline-block px-2 py-1 text-center"><img src="/img/logo-whatsapp.svg" alt="Whatsapp"></a></li>
+        <li class="nav-item"><a href="https://www.youtube.com/channel/UCBQT5P7NzQzf1PzzWGxNtrQ" class="d-block d-md-inline-block px-2 py-1 text-center"><img src="/img/logo-youtube.svg" alt="youtube"></a></li>
+      </ul>
+      </div>
+    </section> 
+</body>
+</html>
